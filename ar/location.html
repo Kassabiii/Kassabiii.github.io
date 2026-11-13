@@ -79,7 +79,11 @@
         // Camera quality: remembered in this browser (same key the hub used to write).
         const quality = document.getElementById('cam-quality');
         quality.value = `${res.w}x${res.h}`;
-        if (quality.value !== `${res.w}x${res.h}`) quality.value = '1280x720';
+        if (quality.value !== `${res.w}x${res.h}`) {
+            // Stored value isn't one of the options: fall back to 720p for the camera too.
+            quality.value = '1280x720';
+            res = { w: 1280, h: 720 };
+        }
         quality.addEventListener('change', () => {
             const [w, h] = quality.value.split('x').map(Number);
             res = { w, h };
