@@ -161,6 +161,33 @@
             line-height: 1.5;
         }
 
+        /* Placeholder cards: not links yet, replaced by real projects later. */
+        .card.soon {
+            border-style: dashed;
+            cursor: default;
+        }
+
+        .card.soon:hover {
+            transform: none;
+            box-shadow: none;
+            border-color: #2d2d4e;
+        }
+
+        .card.soon .title,
+        .card.soon .desc { opacity: 0.75; }
+
+        .badge-soon {
+            align-self: flex-start;
+            margin-top: 0.25rem;
+            padding: 0.15rem 0.6rem;
+            border: 1px solid #2d2d4e;
+            border-radius: 999px;
+            color: #c4b5fd;
+            font-size: 0.72rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
         .section {
             width: 100%;
             max-width: 800px;
@@ -243,6 +270,30 @@
             <li><a href="https://github.com/Kassabiii">GitHub</a></li>
         </ul>
     </header>
+
+    <section class="section" aria-labelledby="elearning-title">
+        <h2 class="section-title" id="elearning-title">E-learning</h2>
+        <div class="grid">
+            <div class="card soon">
+                <span class="number">H5P · 01</span>
+                <span class="title">Interactive H5P activity</span>
+                <span class="desc">An interactive learning activity built in H5P.</span>
+                <span class="badge-soon">Coming soon</span>
+            </div>
+            <div class="card soon">
+                <span class="number">Storyline · 02</span>
+                <span class="title">Storyline storyboard</span>
+                <span class="desc">A storyboard for a scenario-based module, designed in Articulate Storyline.</span>
+                <span class="badge-soon">Coming soon</span>
+            </div>
+            <div class="card soon">
+                <span class="number">LMS · 03</span>
+                <span class="title">Course on an LMS</span>
+                <span class="desc">A full course set up on a Moodle-style learning management system.</span>
+                <span class="badge-soon">Coming soon</span>
+            </div>
+        </div>
+    </section>
 
     <section class="section" aria-labelledby="demos-title">
         <h2 class="section-title" id="demos-title">Demos</h2>
