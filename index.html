@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="theme-color" content="#0f0f1a">
     <title>Taoufik Kassabi · E-learning, instructional design & web development</title>
     <meta name="description" content="Portfolio of Taoufik Kassabi: e-learning and instructional designer, web and software developer, English tutor. AR demos, a verb-practice app and a Spotify game.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Taoufik Kassabi · E-learning, instructional design &amp; web development">
+    <meta property="og:description" content="Portfolio of Taoufik Kassabi: e-learning and instructional designer, web and software developer, English tutor. AR demos, a verb-practice app and a Spotify game.">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
         * {
             margin: 0;
@@ -188,6 +193,13 @@
             text-transform: uppercase;
         }
 
+        main {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .section {
             width: 100%;
             max-width: 800px;
@@ -203,59 +215,6 @@
             text-transform: uppercase;
         }
 
-        .res-section {
-            margin-top: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .res-label {
-            color: #6b7280;
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .res-buttons {
-            display: flex;
-            gap: 0.6rem;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .res-btn {
-            background: #1a1a2e;
-            border: 1px solid #2d2d4e;
-            border-radius: 8px;
-            color: #6b7280;
-            padding: 0.45rem 1rem;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: border-color 0.2s, color 0.2s;
-        }
-
-        .res-btn:hover {
-            border-color: #a78bfa;
-            color: #e0e0f0;
-        }
-
-        .res-btn.active {
-            border-color: #a78bfa;
-            color: #a78bfa;
-            background: rgba(167, 139, 250, 0.1);
-        }
-
-        .res-btn span {
-            color: #4b5563;
-            font-size: 0.75rem;
-            margin-left: 0.3rem;
-        }
-
-        .res-btn.active span {
-            color: #7c6db0;
-        }
     </style>
 </head>
 <body>
@@ -271,6 +230,7 @@
         </ul>
     </header>
 
+    <main>
     <section class="section" aria-labelledby="elearning-title">
         <h2 class="section-title" id="elearning-title">E-learning</h2>
         <div class="grid">
@@ -319,15 +279,6 @@
                 <span class="desc">Place a 3D object at a real-world GPS location.</span>
             </a>
         </div>
-
-        <div class="res-section">
-            <p class="res-label">Camera Resolution — pick what works best for you</p>
-            <div class="res-buttons">
-                <button class="res-btn" data-w="640" data-h="480">480p <span>640×480</span></button>
-                <button class="res-btn" data-w="1280" data-h="720">720p <span>1280×720</span></button>
-                <button class="res-btn" data-w="1920" data-h="1080">1080p <span>1920×1080</span></button>
-            </div>
-        </div>
     </section>
 
     <section class="section" aria-labelledby="personal-title">
@@ -345,17 +296,6 @@
             </a>
         </div>
     </section>
-
-    <script>
-        const saved = JSON.parse(localStorage.getItem('arResolution') || '{"w":1280,"h":720}');
-        document.querySelectorAll('.res-btn').forEach(btn => {
-            if (+btn.dataset.w === saved.w && +btn.dataset.h === saved.h) btn.classList.add('active');
-            btn.addEventListener('click', () => {
-                document.querySelectorAll('.res-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                localStorage.setItem('arResolution', JSON.stringify({ w: +btn.dataset.w, h: +btn.dataset.h }));
-            });
-        });
-    </script>
+    </main>
 </body>
 </html>

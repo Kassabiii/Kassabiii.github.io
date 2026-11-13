@@ -24,10 +24,17 @@
             display: grid;
             gap: 0.6rem;
         }
-        #map-panel .ar-back { min-height: 36px; }
+        #map-panel .ar-back { min-height: 44px; }
+        /* Leaflet's zoom buttons are 30px by default: too small for a thumb. */
+        .leaflet-bar a, .leaflet-touch .leaflet-bar a { width: 44px; height: 44px; line-height: 44px; font-size: 1.4rem; }
         #map-panel h1 { margin: 0; font-size: 1.25rem; }
         #map-hint { color: var(--muted); font-size: 0.95rem; line-height: 1.45; margin: 0; }
         #coords-display { color: var(--accent); font-weight: 600; margin: 0; font-variant-numeric: tabular-nums; }
+        .cam-quality { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; color: var(--muted); font-size: 0.95rem; }
+        .cam-quality select {
+            min-height: 44px; padding: 0 0.75rem; border: 1px solid var(--line); border-radius: 8px;
+            background: var(--surface); color: inherit; font: inherit;
+        }
     </style>
 </head>
 <body class="ar-page">
@@ -38,6 +45,13 @@
             <h1>Location-based object</h1>
             <p id="map-hint">Tap the map close to where you are (within about 200 m) to place a satellite there. Then go outside and look for it through your camera.</p>
             <p id="coords-display">No location picked yet</p>
+            <label class="cam-quality" for="cam-quality">Camera quality
+                <select id="cam-quality">
+                    <option value="640x480">480p (640×480)</option>
+                    <option value="1280x720">720p (1280×720)</option>
+                    <option value="1920x1080">1080p (1920×1080)</option>
+                </select>
+            </label>
             <div class="ar-actions">
                 <button id="locate-me" class="ar-btn" type="button">Show my location</button>
                 <button id="ar-start" class="ar-btn primary" type="button" disabled>Start camera</button>
@@ -61,6 +75,16 @@
     <script>
         let res = { w: 1280, h: 720 };
         try { res = JSON.parse(localStorage.getItem('arResolution')) || res; } catch (e) {}
+
+        // Camera quality: remembered in this browser (same key the hub used to write).
+        const quality = document.getElementById('cam-quality');
+        quality.value = `${res.w}x${res.h}`;
+        if (quality.value !== `${res.w}x${res.h}`) quality.value = '1280x720';
+        quality.addEventListener('change', () => {
+            const [w, h] = quality.value.split('x').map(Number);
+            res = { w, h };
+            try { localStorage.setItem('arResolution', JSON.stringify(res)); } catch (e) {}
+        });
 
         const map = L.map('map').setView([20, 0], 2);
         L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
