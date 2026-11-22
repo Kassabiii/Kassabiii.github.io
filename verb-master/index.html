@@ -6,15 +6,38 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <title>Verb Master · Irregular verb practice</title>
   <meta name="description" content="Practise the past simple and past participle of 162 irregular English verbs, with Arabic meanings, badges and progress charts.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)">
+  <!-- Apply a saved theme before the first paint. -->
+  <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+  <link rel="preload" href="../assets/fonts/calistoga-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/site.css">
   <link rel="stylesheet" href="style.css">
+  <script defer src="../assets/site.js"></script>
 </head>
 <body>
+  <header class="site-header">
+    <nav class="site-nav container" aria-label="Main">
+      <ul>
+        <li><a href="../">home</a></li>
+        <li><a href="../#experience">experience</a></li>
+        <li><a href="../#projects">projects</a></li>
+        <li><a href="../#articles">articles</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+      <button class="icon-button theme-toggle" type="button" aria-label="Switch theme">
+        <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+      </button>
+    </nav>
+  </header>
+
   <div class="app">
 
     <!-- ============ Home ============ -->
     <main id="screen-home" class="screen narrow">
-      <nav class="topbar">
-        <a href="../index.html">← Portfolio</a>
+      <nav class="topbar end">
         <button type="button" class="ghost" data-go="progress">Progress &amp; badges</button>
       </nav>
 
@@ -26,7 +49,7 @@
       <section id="home-snapshot" class="panel snapshot" aria-label="Your progress" hidden></section>
 
       <section id="home-howto" class="panel" aria-labelledby="howto-title">
-        <h2 id="howto-title" class="h3" style="font-size:1.1rem">How it works</h2>
+        <h2 id="howto-title" class="h-sm">How it works</h2>
         <ol class="steps">
           <li>Each round has 5 verbs, one at a time.</li>
           <li>Tap a word to put it in the highlighted gap. On a computer you can also drag it.</li>
@@ -108,11 +131,11 @@
         <p class="muted" id="results-sub"></p>
       </header>
       <section id="results-badges" aria-labelledby="new-badges-title" hidden>
-        <h2 id="new-badges-title" style="font-size:1.2rem;margin-bottom:.75rem">New badges</h2>
+        <h2 id="new-badges-title" class="h-md spaced">New badges</h2>
         <div class="new-badges" id="new-badges"></div>
       </section>
-      <section aria-labelledby="review-title" class="screen" style="gap:.75rem">
-        <h2 id="review-title" style="font-size:1.2rem">Your answers</h2>
+      <section aria-labelledby="review-title" class="screen snug">
+        <h2 id="review-title" class="h-md">Your answers</h2>
         <ul class="review-list" id="review-list"></ul>
       </section>
       <div class="actions">
@@ -125,9 +148,8 @@
     <main id="screen-progress" class="screen" hidden>
       <nav class="topbar">
         <button type="button" class="ghost" data-go="home">← Menu</button>
-        <a href="../index.html">Portfolio</a>
       </nav>
-      <header class="screen" style="gap:.4rem">
+      <header class="screen tight">
         <h1>Your progress</h1>
         <p class="muted">Saved in this browser. A verb counts as mastered when you get both forms right twice in a row.</p>
       </header>
@@ -136,24 +158,24 @@
 
       <section class="charts">
         <div class="chart-card" id="stage-card">
-          <h2 style="font-size:1.1rem">Verbs by stage</h2>
+          <h2 class="h-sm">Verbs by stage</h2>
           <p class="sub">All 162 verbs</p>
           <div id="stage-chart"></div>
         </div>
         <div class="chart-card" id="accuracy-card">
-          <h2 style="font-size:1.1rem">Accuracy per round</h2>
+          <h2 class="h-sm">Accuracy per round</h2>
           <p class="sub">Share of forms right, last 12 rounds</p>
           <div id="accuracy-chart"></div>
         </div>
       </section>
 
-      <section class="screen" style="gap:.75rem" aria-labelledby="badges-title">
-        <h2 id="badges-title" style="font-size:1.2rem">Badges <span class="muted" id="badge-count" style="font-weight:400"></span></h2>
+      <section class="screen snug" aria-labelledby="badges-title">
+        <h2 id="badges-title" class="h-md">Badges <span class="muted count" id="badge-count"></span></h2>
         <div class="badges" id="badges"></div>
       </section>
 
       <section class="panel" aria-labelledby="tricky-title">
-        <h2 id="tricky-title" style="font-size:1.1rem">Verbs to review</h2>
+        <h2 id="tricky-title" class="h-sm">Verbs to review</h2>
         <div id="tricky"></div>
       </section>
 
@@ -162,6 +184,16 @@
       </div>
     </main>
   </div>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <p class="contact">Want to talk? Email me at <a href="mailto:tawfikkessabi@gmail.com">tawfikkessabi@gmail.com</a> or find me on <a href="https://www.linkedin.com/in/kassabiii">LinkedIn</a>.</p>
+      <div class="fine">
+        <span>© 2026 Taoufik Kassabi</span>
+        <span><a href="../">Back to the portfolio</a></span>
+      </div>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
