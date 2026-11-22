@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)">
+    <title>LabSoft · Taoufik Kassabi</title>
+    <meta name="description" content="LabSoft: a lab management platform for an adult education centre in Quebec, with a local AI lab assistant and Moodle grade sync. Case study by Taoufik Kassabi.">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="LabSoft · Taoufik Kassabi">
+    <meta property="og:description" content="A lab management platform for an adult education centre in Quebec, with a local AI lab assistant and Moodle grade sync.">
+    <meta name="twitter:card" content="summary">
+    <!-- Apply a saved theme before the first paint. -->
+    <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+    <link rel="preload" href="../assets/fonts/calistoga-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="../assets/site.css">
+    <script defer src="../assets/site.js"></script>
+</head>
+<body>
+    <header class="site-header">
+        <nav class="site-nav container" aria-label="Main">
+            <ul>
+                <li><a href="../">home</a></li>
+                <li><a href="../#experience">experience</a></li>
+                <li><a href="../#projects">projects</a></li>
+                <li><a href="../#articles">articles</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+            <button class="icon-button theme-toggle" type="button" aria-label="Switch theme">
+                <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container page">
+        <header class="case-header">
+            <a class="back" href="../#projects">← All projects</a>
+            <h1>LabSoft</h1>
+            <p class="lede">A lab management platform for an adult education centre in Quebec. Learners book lab sessions and get help from an AI assistant, technicians manage stock, and grades go straight to Moodle.</p>
+            <p class="case-meta">Master’s final-year project · Built for CÉA des Belles-Rives, Québec · 2026</p>
+            <ul class="tags">
+                <li>Vue 3</li><li>TypeScript</li><li>Node.js</li><li>SQLite</li><li>Ollama + Mistral</li><li>Moodle Web Services</li>
+            </ul>
+            <figure class="shot hero-shot">
+                <img src="img/assistant.webp" width="1298" height="604" alt="LabSoft AI assistant chat: a learner asks why a solution changes colour and the assistant answers with guiding questions about the titration.">
+                <figcaption>The AI lab assistant guides a learner with questions instead of giving the answer.</figcaption>
+            </figure>
+            <div class="card-actions">
+                <a class="button primary" href="mailto:tawfikkessabi@gmail.com?subject=LabSoft%20demo">Ask me for a demo</a>
+            </div>
+        </header>
+
+        <section aria-labelledby="does-title">
+            <h2 class="section-title" id="does-title">What it does</h2>
+            <ul class="feature-grid">
+                <li class="card"><h3>Book a lab</h3><p>Learners pick a lab, a time slot and the materials they need. Double bookings are blocked.</p></li>
+                <li class="card"><h3>Approve and track stock</h3><p>Technicians approve requests from a queue. Each lab’s stock updates, with low items highlighted.</p></li>
+                <li class="card"><h3>AI lab assistant</h3><p>Learners ask questions during practical work. Answers come from the teacher’s own lab sheets.</p></li>
+                <li class="card"><h3>Grades to Moodle</h3><p>Practical exam grades go straight to the Moodle gradebook, with no re-typing.</p></li>
+            </ul>
+        </section>
+
+        <section aria-labelledby="shots-title">
+            <h2 class="section-title" id="shots-title">Screenshots</h2>
+            <div class="gallery">
+                <figure class="shot">
+                    <img src="img/booking.webp" width="1320" height="595" loading="lazy" alt="Booking form: session title, objective, and a searchable list of lab materials with quantities.">
+                    <figcaption>A learner books a session and requests materials.</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/approval.webp" width="1313" height="600" loading="lazy" alt="Technician dashboard with a pending session, the requested materials and Approve, Refuse and Revoke buttons.">
+                    <figcaption>The technician’s approval queue.</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/calendar.webp" width="1292" height="587" loading="lazy" alt="Monthly calendar with a session details window: learner, lab, date, period and reserved materials.">
+                    <figcaption>Calendar view, colour-coded by status.</figcaption>
+                </figure>
+                <figure class="shot">
+                    <img src="img/inventory.webp" width="1293" height="599" loading="lazy" alt="Inventory table of glassware with quantity, location and lab; low quantities in orange, empty ones in red.">
+                    <figcaption>Inventory, with low and empty stock highlighted.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section aria-labelledby="hood-title">
+            <h2 class="section-title" id="hood-title">Under the hood</h2>
+            <ul class="feature-grid">
+                <li class="card"><h3>Local AI</h3><p>Mistral runs through Ollama and answers from passages of uploaded PDFs (RAG). Nothing is sent to an outside AI service.</p></li>
+                <li class="card"><h3>Moodle Web Services</h3><p>Six REST functions look up courses, learners and grade items, and push grades.</p></li>
+                <li class="card"><h3>Four roles</h3><p>Learner, technician, teacher and admin, each checked on the server across 67 API endpoints.</p></li>
+            </ul>
+            <p class="status">Working prototype, not rolled out at the centre. The code is private; I’m happy to walk through it in an interview.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <p class="contact">Want to talk? Email me at <a href="mailto:tawfikkessabi@gmail.com">tawfikkessabi@gmail.com</a> or find me on <a href="https://www.linkedin.com/in/kassabiii">LinkedIn</a>.</p>
+            <div class="fine">
+                <span>© 2026 Taoufik Kassabi</span>
+                <span><a href="../">Back to the portfolio</a></span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
