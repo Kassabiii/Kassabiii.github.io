@@ -560,12 +560,6 @@ a.zoom:hover img { border-color: var(--muted-fg); }
     margin-top: 1rem;
 }
 
-.prose-block {
-    margin-top: 1rem;
-    max-width: 40rem;
-    text-wrap: pretty;
-}
-
 .stack-title {
     margin-top: 2rem;
     font-size: 1rem;
