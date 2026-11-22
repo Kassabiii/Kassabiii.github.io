@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="8" fill="#1a1a2e"/>
-  <path d="M9 23V9h4.2c3.3 0 5.3 1.7 5.3 4.4 0 1.8-.9 3.1-2.5 3.8L19.4 23h-3.1l-2.9-5.3H12V23zm3-7.8h1.1c1.6 0 2.4-.6 2.4-1.8s-.8-1.8-2.4-1.8H12z" fill="#a78bfa"/>
-  <circle cx="23" cy="21.5" r="1.8" fill="#34d399"/>
+  <rect width="32" height="32" rx="8" fill="#030712"/>
+  <!-- "TK", drawn as strokes so it looks the same in every browser. -->
+  <path d="M5.5 10.5h9M10 10.5v12" fill="none" stroke="#f9fafb" stroke-width="2.6" stroke-linecap="round"/>
+  <path d="M18.5 10.5v12M26 10.5l-7 6.2M21.3 14.6l4.9 7.9" fill="none" stroke="#a78bfa" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
