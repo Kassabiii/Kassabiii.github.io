@@ -367,13 +367,6 @@ main { flex: 1; }
 
 /* ---------- Projects ---------- */
 
-.project-group { margin-top: 2rem; }
-
-.project-group h3 {
-    font-size: 1.05rem;
-    font-weight: 600;
-}
-
 
 .cards {
     display: grid;
@@ -392,6 +385,7 @@ main { flex: 1; }
     background: var(--bg);
 }
 
+.card h3,
 .card h4 {
     margin: 0;
     font-size: 1rem;
