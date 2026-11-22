@@ -192,11 +192,6 @@ main { flex: 1; }
     line-height: 1.2;
 }
 
-.section-intro {
-    margin-top: 0.4rem;
-    color: var(--muted-fg);
-    font-size: 0.95rem;
-}
 
 /* ---------- Hero ---------- */
 
@@ -379,11 +374,6 @@ main { flex: 1; }
     font-weight: 600;
 }
 
-.project-group .note {
-    margin-top: 0.2rem;
-    color: var(--muted-fg);
-    font-size: 0.875rem;
-}
 
 .cards {
     display: grid;
@@ -437,18 +427,7 @@ main { flex: 1; }
     padding-top: 0.4rem;
 }
 
-/* Placeholder cards: not links yet, replaced by real projects later. */
-.card.soon { border-style: dashed; }
 
-.badge-soon {
-    align-self: flex-start;
-    margin-top: auto;
-    padding: 0.1rem 0.55rem;
-    border: 1px solid var(--border);
-    border-radius: 999px;
-    color: var(--muted-fg);
-    font-size: 0.75rem;
-}
 
 /* Featured project: spans the full row on the hub. */
 .card.featured { grid-column: 1 / -1; }
