@@ -473,9 +473,15 @@
     wrap.style.display = 'grid';
     wrap.style.gap = '0.75rem';
     const bar = el('div', 'stage-bar');
-    bar.setAttribute('role', 'img');
-    bar.setAttribute('aria-label', STAGES.map(s => `${s.label}: ${counts[s.key]}`).join(', '));
     const total = verbs.length || 1;
+    if (withTable) {
+      // Each segment is focusable for its tooltip, so each one needs its own name.
+      bar.setAttribute('role', 'group');
+      bar.setAttribute('aria-label', 'Verbs by stage');
+    } else {
+      bar.setAttribute('role', 'img');
+      bar.setAttribute('aria-label', STAGES.map(s => `${s.label}: ${counts[s.key]}`).join(', '));
+    }
     for (const s of STAGES) {
       if (!counts[s.key]) continue;
       const seg = el('span', 'stage-seg');
@@ -484,6 +490,8 @@
       seg.style.background = s.color;
       if (withTable) {
         seg.tabIndex = 0;
+        seg.setAttribute('role', 'img');
+        seg.setAttribute('aria-label', `${s.label}: ${counts[s.key]} verbs, ${Math.round(counts[s.key] / total * 100)}%`);
         const tip = () => showTip(wrap.closest('.chart-card'), seg.getBoundingClientRect(),
           `${counts[s.key]} verbs`, `${s.label} · ${Math.round(counts[s.key] / total * 100)}%`);
         seg.addEventListener('pointerenter', tip);
@@ -535,7 +543,8 @@
     const barW = Math.min(24, band * 0.6);
     const y = v => pad.top + plotH - (v / 100) * plotH;
 
-    const s = svg('svg', { viewBox: `0 0 ${W} ${H}`, class: 'chart-svg', role: 'img',
+    // A group, not an image: the per-round areas inside are focusable and named.
+    const s = svg('svg', { viewBox: `0 0 ${W} ${H}`, class: 'chart-svg', role: 'group',
       'aria-label': `Accuracy for the last ${rounds.length} rounds. Latest: ${rounds[rounds.length - 1].pct}%.` });
 
     for (const t of [0, 50, 100]) {
@@ -569,9 +578,9 @@
         g.appendChild(v);
       }
 
-      const hit = svg('rect', { x: cx - band / 2, y: pad.top, width: band, height: plotH, class: 'hit', tabindex: 0,
-        'aria-label': `Round ${d.n}: ${d.pct}%` });
       const label = `Round ${d.n} · ${d.r.review ? 'mistakes' : d.r.mode} · ${d.r.right} of ${d.r.total} forms`;
+      const hit = svg('rect', { x: cx - band / 2, y: pad.top, width: band, height: plotH, class: 'hit', tabindex: 0,
+        role: 'img', 'aria-label': `Round ${d.n}: ${d.pct}%, ${d.r.review ? 'mistakes' : d.r.mode}, ${d.r.right} of ${d.r.total} forms right` });
       const tip = () => {
         g.classList.add('focus');
         const barRect = (g.querySelector('.bar') || hit).getBoundingClientRect();
@@ -641,10 +650,11 @@
       const card = el('div', 'badge ' + (has ? 'earned' : 'locked'));
       card.appendChild(medal(b));
       const txt = el('div');
+      // Earned vs locked is only shown by fading; say it in text for screen readers.
+      txt.appendChild(el('span', 'sr-only', has ? 'Earned badge: ' : 'Locked badge: '));
       txt.appendChild(el('div', 'badge-name', b.name));
       txt.appendChild(el('div', 'badge-how', has ? `Earned ${progress.badges[b.id]}` : b.how));
       card.appendChild(txt);
-      card.setAttribute('aria-label', `${b.name}: ${has ? 'earned' : 'locked. ' + b.how}`);
       grid.appendChild(card);
     }
 
