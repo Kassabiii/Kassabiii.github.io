@@ -3,43 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Page not found · Portfolio</title>
+    <title>Page not found · Taoufik Kassabi</title>
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            padding: 16px;
-            box-sizing: border-box;
-            background: #0f0f1a;
-            color: #e0e0f0;
-            font: 16px/1.6 'Segoe UI', system-ui, -apple-system, sans-serif;
-            text-align: center;
-        }
-        .code { margin: 0; color: #a78bfa; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; }
-        h1 { margin: 8px 0; font-size: clamp(1.8rem, 6vw, 2.4rem); }
-        p { margin: 0 0 24px; color: #a3a6c4; }
-        a {
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 10px;
-            background: #a78bfa;
-            color: #16122b;
-            font-weight: 600;
-            text-decoration: none;
-        }
-        a:focus-visible { outline: 2px solid #a78bfa; outline-offset: 3px; }
-    </style>
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#030712" media="(prefers-color-scheme: dark)">
+    <!-- Apply a saved theme before the first paint. -->
+    <script>try { var t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}</script>
+    <!-- Root-relative paths: this page is served at whatever address was not found. -->
+    <link rel="stylesheet" href="/assets/site.css">
+    <script defer src="/assets/site.js"></script>
 </head>
 <body>
-    <main>
-        <p class="code">404</p>
-        <h1>This page doesn’t exist</h1>
-        <p>It may have moved when the portfolio was reorganised.</p>
-        <a href="/">Back to the portfolio</a>
+    <header class="site-header">
+        <nav class="site-nav container" aria-label="Main">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/#experience">experience</a></li>
+                <li><a href="/#projects">projects</a></li>
+                <li><a href="/#articles">articles</a></li>
+                <li><a href="#contact">contact</a></li>
+            </ul>
+            <button class="icon-button theme-toggle" type="button" aria-label="Switch theme">
+                <svg class="icon sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                <svg class="icon moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main class="container page not-found">
+        <section aria-labelledby="nf-title">
+            <h1 id="nf-title">This page doesn’t exist.</h1>
+            <p>It may have moved when the portfolio was reorganised. Everything is still reachable from the home page.</p>
+            <div class="card-actions">
+                <a class="button primary" href="/">Go to the portfolio</a>
+                <a class="button" href="/#projects">See the projects</a>
+            </div>
+        </section>
     </main>
+
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <p class="contact">Want to talk? Email me at <a href="mailto:tawfikkessabi@gmail.com">tawfikkessabi@gmail.com</a> or find me on <a href="https://www.linkedin.com/in/kassabiii">LinkedIn</a>.</p>
+            <div class="fine">
+                <span>© 2026 Taoufik Kassabi</span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

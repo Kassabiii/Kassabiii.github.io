@@ -554,6 +554,25 @@ main { flex: 1; }
     font-size: 0.9rem;
 }
 
+/* ---------- 404 ---------- */
+
+.not-found { padding-top: 4rem; }
+
+.not-found h1 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.25rem, 8vw, 3rem);
+    line-height: 1.1;
+}
+
+.not-found p {
+    margin-top: 0.75rem;
+    max-width: 32rem;
+    color: var(--muted-fg);
+}
+
+.not-found .card-actions { margin-top: 1.5rem; }
+
 /* ---------- Footer ---------- */
 
 .site-footer {
