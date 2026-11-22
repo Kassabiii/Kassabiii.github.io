@@ -24,6 +24,35 @@
         });
     });
 
+    // Screenshots: open the full-size image in a dialog. Without JavaScript the link opens the image itself.
+    var zoomLinks = document.querySelectorAll('a.zoom');
+    if (zoomLinks.length && typeof HTMLDialogElement === 'function') {
+        var lightbox = document.createElement('dialog');
+        lightbox.className = 'lightbox';
+        lightbox.innerHTML = '<button type="button" class="icon-button lightbox-close" aria-label="Close">' +
+            '<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>' +
+            '</button><img alt="">';
+        document.body.appendChild(lightbox);
+        var big = lightbox.querySelector('img');
+
+        zoomLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (e.ctrlKey || e.metaKey || e.shiftKey) return; // let "open in new tab" work
+                e.preventDefault();
+                var thumb = link.querySelector('img');
+                big.src = link.href;
+                big.alt = thumb ? thumb.alt : '';
+                lightbox.showModal();
+            });
+        });
+
+        // Anything except the image itself closes it: the backdrop, the close button. Esc is built in.
+        lightbox.addEventListener('click', function (e) {
+            if (e.target !== big) lightbox.close();
+        });
+        lightbox.addEventListener('close', function () { big.removeAttribute('src'); });
+    }
+
     // Tabs: click to switch, arrow keys move between tabs (WAI-ARIA tabs pattern).
     document.querySelectorAll('[role="tablist"]').forEach(function (list) {
         var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
