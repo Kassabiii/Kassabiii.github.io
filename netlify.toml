@@ -5,21 +5,16 @@
 [build]
   publish = "."
 
-# Security headers for every page. The AR demos need the camera and GPS on this site.
+# Security headers for every page. No page needs the camera, GPS or microphone.
 [[headers]]
   for = "/*"
   [headers.values]
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(self), geolocation=(self), microphone=()"
+    Permissions-Policy = "camera=(), geolocation=(), microphone=()"
 
-# Markers and 3D models rarely change: let browsers keep them for a week.
+# Fonts rarely change: let browsers keep them for a week.
 [[headers]]
-  for = "/ar/markers/*"
-  [headers.values]
-    Cache-Control = "public, max-age=604800"
-
-[[headers]]
-  for = "/ar/models/*"
+  for = "/assets/fonts/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
