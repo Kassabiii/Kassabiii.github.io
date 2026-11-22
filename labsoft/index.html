@@ -64,6 +64,11 @@
             </ul>
         </section>
 
+        <section aria-labelledby="pedagogy-title">
+            <h2 class="section-title" id="pedagogy-title">The pedagogy behind it</h2>
+            <p class="prose-block">The centre’s learners are adults who work through the science programme at their own pace, often alone in the lab, so LabSoft is built around their autonomy: they book their own sessions when they are ready, instead of waiting for a fixed timetable. The AI assistant is there to scaffold practical work, not to replace thinking. Teachers write its instructions, so it can guide with questions rather than hand over results, and it answers only from the teacher’s own lab sheets, which keeps its help aligned with what the teacher planned. The teacher stays in charge of what the assistant does, and sending grades to Moodle automatically gives back the time that went into re-typing them.</p>
+        </section>
+
         <section aria-labelledby="shots-title">
             <h2 class="section-title" id="shots-title">Screenshots</h2>
             <div class="gallery">
@@ -93,6 +98,14 @@
                 <li class="card"><h3>Moodle Web Services</h3><p>Six REST functions look up courses, learners and grade items, and push grades.</p></li>
                 <li class="card"><h3>Four roles</h3><p>Learner, technician, teacher and admin, each checked on the server across 67 API endpoints.</p></li>
             </ul>
+            <h3 class="stack-title">Full tech stack</h3>
+            <dl class="stack">
+                <div><dt>Front end</dt><dd><ul class="tags"><li>Vue 3</li><li>TypeScript</li><li>Vite</li><li>Vue Router</li><li>Pinia</li><li>Tailwind CSS</li><li>Lucide icons</li><li>SheetJS (Excel import)</li><li>BarcodeDetector API</li></ul></dd></div>
+                <div><dt>Back end</dt><dd><ul class="tags"><li>Node.js</li><li>Express 5</li><li>SQLite (better-sqlite3)</li><li>JWT</li><li>bcrypt</li><li>Multer (uploads)</li><li>pdf-parse</li></ul></dd></div>
+                <div><dt>AI</dt><dd><ul class="tags"><li>Ollama</li><li>Mistral</li><li>RAG over teacher PDFs</li><li>Streamed replies (SSE)</li></ul></dd></div>
+                <div><dt>Integration</dt><dd><ul class="tags"><li>Moodle Web Services (REST)</li></ul></dd></div>
+                <div><dt>Hosting and desktop</dt><dd><ul class="tags"><li>Railway</li><li>Tauri 2 (desktop version in progress)</li></ul></dd></div>
+            </dl>
             <p class="status">Working prototype, not rolled out at the centre. The code is private; I’m happy to walk through it in an interview.</p>
         </section>
     </main>

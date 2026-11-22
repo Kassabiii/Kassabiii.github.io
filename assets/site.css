@@ -560,6 +560,42 @@ a.zoom:hover img { border-color: var(--muted-fg); }
     margin-top: 1rem;
 }
 
+.prose-block {
+    margin-top: 1rem;
+    max-width: 40rem;
+    text-wrap: pretty;
+}
+
+.stack-title {
+    margin-top: 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.stack {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0.75rem 0 0;
+}
+
+.stack > div {
+    display: grid;
+    grid-template-columns: 9rem 1fr;
+    gap: 0.25rem 1rem;
+    align-items: baseline;
+}
+
+.stack dt {
+    color: var(--muted-fg);
+    font-size: 0.875rem;
+}
+
+.stack dd { margin: 0; }
+
+@media (max-width: 479px) {
+    .stack > div { grid-template-columns: 1fr; }
+}
+
 .status {
     margin-top: 1.25rem;
     color: var(--muted-fg);
