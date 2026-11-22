@@ -596,6 +596,11 @@ a.zoom:hover img { border-color: var(--muted-fg); }
     font-size: 0.9rem;
 }
 
+.status a {
+    text-decoration-color: var(--accent);
+    text-underline-offset: 3px;
+}
+
 /* ---------- 404 ---------- */
 
 .not-found { padding-top: 4rem; }
