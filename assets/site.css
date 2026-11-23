@@ -223,7 +223,52 @@ main { flex: 1; }
     margin-top: 1.5rem;
 }
 
-.social { display: flex; gap: 0.25rem; }
+.social { display: flex; gap: 0.25rem; position: relative; }
+
+/* Email icon: shows both addresses on hover, keyboard focus or tap. No JavaScript. */
+.social .email-menu button {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--muted-fg);
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.social .email-menu:hover button,
+.social .email-menu:focus-within button { color: var(--fg); }
+
+.email-pop {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    padding: 0.25rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.12);
+}
+
+.email-menu:hover .email-pop,
+.email-menu:focus-within .email-pop { display: block; }
+
+.social .email-pop a {
+    display: block;
+    width: auto;
+    height: auto;
+    padding: 0.6rem 0.75rem;
+    border-radius: 6px;
+    color: var(--fg);
+    white-space: nowrap;
+}
+
+.social .email-pop a:hover { background: var(--border); }
 
 .social a {
     display: inline-grid;
