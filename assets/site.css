@@ -236,6 +236,32 @@ main { flex: 1; }
 
 .social a:hover { color: var(--fg); }
 
+/* ---------- Toast (email copied) ---------- */
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 1.5rem;
+    z-index: 20;
+    max-width: calc(100vw - 2rem);
+    padding: 0.6rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--bg);
+    color: var(--fg);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 16px rgb(0 0 0 / 0.15);
+    transform: translate(-50%, 0.5rem);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
 /* ---------- Buttons ---------- */
 
 .button {

@@ -53,6 +53,39 @@
         lightbox.addEventListener('close', function () { big.removeAttribute('src'); });
     }
 
+    // Email links: a mailto: link does nothing when the visitor has no mail app set up.
+    // On click, also copy the address and say so. The link still opens a mail app where there is one.
+    var mailLinks = document.querySelectorAll('a[href^="mailto:"]');
+    if (mailLinks.length) {
+        var toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.setAttribute('role', 'status');
+        document.body.appendChild(toast);
+        var toastTimer;
+
+        function showToast(text) {
+            toast.textContent = text;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 3500);
+        }
+
+        mailLinks.forEach(function (link) {
+            link.addEventListener('click', function (e) {
+                if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+                var address = link.getAttribute('href').replace(/^mailto:/, '').split('?')[0];
+                if (navigator.clipboard && window.isSecureContext) {
+                    navigator.clipboard.writeText(address).then(
+                        function () { showToast('Email address copied: ' + address); },
+                        function () { showToast('My email: ' + address); }
+                    );
+                } else {
+                    showToast('My email: ' + address);
+                }
+            });
+        });
+    }
+
     // Tabs: click to switch, arrow keys move between tabs (WAI-ARIA tabs pattern).
     document.querySelectorAll('[role="tablist"]').forEach(function (list) {
         var tabs = Array.prototype.slice.call(list.querySelectorAll('[role="tab"]'));
